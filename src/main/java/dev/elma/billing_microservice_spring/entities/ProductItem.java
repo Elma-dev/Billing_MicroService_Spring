@@ -1,5 +1,6 @@
 package dev.elma.billing_microservice_spring.entities;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import dev.elma.billing_microservice_spring.models.Product;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -14,7 +15,7 @@ public class ProductItem {
     private Long Id;
     private double price;
     private int quantity;
-    @ManyToOne
+    @ManyToOne @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private Bill bill;
     private Long productID;
     @Transient
